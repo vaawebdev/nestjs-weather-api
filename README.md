@@ -1,4 +1,4 @@
-# Siple NESTJS openweather API proxy with mongoDB caching
+# Simple OpenweatherAPI proxy with MongoDB caching
 
 ## Installation
 
