@@ -14,9 +14,10 @@ export class WeatherController {
   public async cityWeather(@Param('city') cityName: string): Promise<any> {
     const mongoRes = await this.mongo.getCityWeather(cityName);
 
-    if (mongoRes && mongoRes.expirationDate.getTime() >= new Date().getTime()) {
+    if (mongoRes && mongoRes.expirationDate.getTime() > new Date().getTime()) {
       return mongoRes;
     }
+
     try {
       const openweatherRes = await this.openweather.fetchCityWeather(cityName);
       return await this.mongo.saveCityWeather(openweatherRes.data);
